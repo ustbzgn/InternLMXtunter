@@ -16,9 +16,3 @@ botocore
 torch-scatter
 pyecharts
 py-libnuma
--f https://data.pyg.org/whl/torch-1.13.1+cu117.html
-
---extra-index-url https://download.pytorch.org/whl/cu117
-torch==1.13.1+cu117
-torchvision==0.14.1+cu117
-torchaudio==0.13.1
