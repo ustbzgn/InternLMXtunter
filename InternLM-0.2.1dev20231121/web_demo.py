@@ -16,8 +16,12 @@ from transformers.utils import logging
 
 from tools.transformers.interface import GenerationConfig, generate_interactive
 
+from openxlab.model import download
+
 logger = logging.get_logger(__name__)
 
+download(model_repo='ustbzgn/model',
+        output='model')
 
 def on_btn_click():
     del st.session_state.messages
