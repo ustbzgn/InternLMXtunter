@@ -14,7 +14,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers.utils import logging
 
-from InternLM-0.2.1dev20231121.tools.transformers.interface import GenerationConfig, generate_interactive
+from tools.transformers.interface import GenerationConfig, generate_interactive
 
 from openxlab.model import download
 
