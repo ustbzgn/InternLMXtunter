@@ -6,8 +6,6 @@ transformers_stream_generator==0.0.4
 openxlab
 tiktoken
 einops
-_libgcc_mutex=0.1=main
-_openmp_mutex=5.1=1_gnu
 accelerate=0.26.1=pypi_0
 addict=2.4.0=pypi_0
 aiohttp=3.9.3=pypi_0
