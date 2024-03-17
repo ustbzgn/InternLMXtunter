@@ -11,17 +11,23 @@ from dataclasses import asdict
 
 import streamlit as st
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModel
 from transformers.utils import logging
 
 from InternLM1.tools.transformers.interface import GenerationConfig, generate_interactive
 
 from openxlab.model import download
+import os
+
+base_path = './model'
+# download repo to the base_path directory using git
+os.system('apt install git')
+os.system('apt install git-lfs')
+os.system(f'git clone https://code.openxlab.org.cn/ustbzgn/model.git {base_path}')
+os.system(f'cd {base_path} && git lfs pull')
 
 logger = logging.get_logger(__name__)
 
-download(model_repo='ustbzgn/model',
-        output='model1')
 
 def on_btn_click():
     del st.session_state.messages
@@ -30,11 +36,11 @@ def on_btn_click():
 @st.cache_resource
 def load_model():
     model = (
-        AutoModelForCausalLM.from_pretrained('model1', trust_remote_code=True)
+        AutoModelForCausalLM.from_pretrained(base_path, trust_remote_code=True)
         .to(torch.bfloat16)
         .cuda()
     )
-    tokenizer = AutoTokenizer.from_pretrained('model1', trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(base_path, trust_remote_code=True)
     return model, tokenizer
 
 
